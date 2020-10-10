@@ -1,38 +1,83 @@
-/* eslint-disable */
+// /* eslint-disable */
+// const withLess = require('@zeit/next-less')
+// const lessToJS = require('less-vars-to-js')
+// const fs = require('fs')
+// const path = require('path')
+
+// // Where your antd-custom.less file lives
+// const themeVariables = lessToJS(
+//   fs.readFileSync(
+//     path.resolve(__dirname, './assets/antd-custom.less'),
+//     'utf8'
+//   )
+// )
+// // fix: prevents error when .less files are required by node
+// if (typeof require !== 'undefined') {
+//   require.extensions['.less'] = (file) => {}
+// }
+
+// module.exports = withLess({
+//   lessLoaderOptions: {
+//     javascriptEnabled: true,
+//     modifyVars: themeVariables // make your antd custom effective
+//   },
+
+// })
+
 const withLess = require('@zeit/next-less')
 const lessToJS = require('less-vars-to-js')
 const fs = require('fs')
 const path = require('path')
-const CONFIG = require('./config')
+var configfile = require('./config/config');
+let resourcePath = configfile['current'].RESOURCE_PATH;
 
-// Where your antd-custom.less file lives
 const themeVariables = lessToJS(
-  fs.readFileSync(
-    path.resolve(__dirname, './pages/common/styles/antd-custom.less'),
-    'utf8'
-  )
+  fs.readFileSync(path.resolve(__dirname, './assets/antd-custom.less'), 'utf8')
 )
-// fix: prevents error when .less files are required by node
-if (typeof require !== 'undefined') {
-  require.extensions['.less'] = (file) => {}
-}
-
-
-let assetPrefixFormConfig = CONFIG.getInitConfig().LOCATION_PREFIX;
-let currentEnvName   = CONFIG.getCurrentEnvName();
-console.log('assetProfix in next.config.js===>'  + assetPrefixFormConfig);
 
 module.exports = withLess({
+  //  publicRuntimeConfig: {
+  //    staticFolder: '/account/static',
+  //  },
+  async rewrites() {
+    return [
+      {
+        source: resourcePath + '/_next/:slug*',
+        destination: '/_next/:slug*',
+      },
+    ]
+  },
+  assetPrefix:  process.env.NODE_ENV === "production" ? resourcePath: "" ,
+  cssModules:false,
+  cssLoaderOptions:{
+        importLoaders: 1,
+        minimize:true,
+      },
   lessLoaderOptions: {
     javascriptEnabled: true,
-    modifyVars: themeVariables // make your antd custom effective
+    modifyVars: themeVariables, // make your antd custom effective
   },
-  
-  publicRuntimeConfig: { // Will be available on both server and client
-    staticFolder: '/static',
-    envName: currentEnvName
-  },
-  assetPrefix: "/" + assetPrefixFormConfig
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      const antStyles = /antd\/.*?\/style.*?/
+      const origExternals = [...config.externals]
+      config.externals = [
+        (context, request, callback) => {
+          if (request.match(antStyles)) return callback()
+          if (typeof origExternals[0] === 'function') {
+            origExternals[0](context, request, callback)
+          } else {
+            callback()
+          }
+        },
+        ...(typeof origExternals[0] === 'function' ? [] : origExternals),
+      ]
 
+      config.module.rules.unshift({
+        test: antStyles,
+        use: 'null-loader',
+      })
+    }
+    return config
+  },
 })
-
