@@ -130,7 +130,7 @@ export default class MyLayout extends React.Component {
               {that.buildHeaderMenu(headerMenus)}
             </Menu>
           </Header>
-          <Content style={{ padding: '0 10px' }}>
+          <Content >
             <Layout>
   
               {that.renderSidebarMenus(path)}
