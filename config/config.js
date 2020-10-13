@@ -23,9 +23,6 @@ const DEVELOPMENT_HOST_WEB = 'localhost:8080';
 const UAT_HOST_WEB = 'uat.koudaibook.com';
 const PRODUCTION_HOST_WEB = 'www.koudaibook.com';
 
-const DEV_UPLOAD_ROOT = '/tmp/my_uploads/';
-const PROD_UPLOAD_ROOT = '/tmp/my_uploads/';
-
 function detectEnvironment() {
   let env = ENV_NAME_DEVELOPMENT;
   const isServer = typeof window === 'undefined'
@@ -107,28 +104,13 @@ function routeToWebRelease() {
   }
 }
 
-function uploadRoot() {
-  const rootPath = `${DEV_UPLOAD_ROOT}`;
-
-  switch (detectEnvironment()) {
-    case ENV_NAME_DEVELOPMENT:
-      return rootPath;
-    case ENV_NAME_PRODUCTION:
-      return `${PROD_UPLOAD_ROOT}`;
-
-    default:
-      return rootPath;
-  }
-}
 
 
 module.exports = {
-  current: {
     SOA_GATE: routeToMicroservice(),
     WEB_GATE: routeToWeb(),
     WEB_RELEASE: routeToWebRelease(),
-    UPLOAD_PATH: uploadRoot(),
-    RESOURCE_PATH: "/ehealth_web",
-   }
+    RESOURCE_PATH: "/account",
+    PROJECT_NAME: "meeting-live"
 }
 

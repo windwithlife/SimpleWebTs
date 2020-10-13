@@ -4,7 +4,7 @@ import { Form, Card, Input, Button, Select } from 'antd';
 import router from 'next/router';
 import XSelect from '../common/components/select';
 const { TextArea } = Input;
-import Upload from '../common/components/FileUpload';
+
 
 @inject('accountStore')
 @observer

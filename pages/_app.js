@@ -39,16 +39,7 @@ class MyMobxApp extends App {
         const { Component, pageProps } = this.props;
         
         let pathName = this.props.router.pathname;
-
-        // let  layoutName = "originNamePage";
-        // if (Component.getLayoutName){
-        //     layoutName = Component.getLayoutName();
-        // }
-        //console.log(layoutName + Component.name)
         console.log(this.props.router.pathname);
-        //console.log(this.props);
-
-
         return (
             <Provider {...this.mobxStore}>
                 <Layout path={pathName}>

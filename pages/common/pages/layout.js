@@ -1,19 +1,33 @@
-import Head from 'next/head'
+//import Head from 'next/head'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Sider, Footer } = Layout;
 import {
-  AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  DesktopOutlined,
-  ContainerOutlined,
+
   MailOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
 
 import router from 'next/router';
 import { inject, observer } from 'mobx-react';
+import "../../styles/wrap.less";
+
+
+
+function Head(props){
+  return (
+    <div className="head_con">
+      <div className="head_con_left">
+      E健云运营后台
+      </div>
+      <div className="head_con_right">
+        {/* <div>18621085656</div> */}
+        {/* <div className="exit">退出</div> */}
+      </div>
+    </div>
+  )
+}
+
 
 @inject("menuStore")
 @observer
@@ -27,11 +41,9 @@ export default class MyLayout extends React.Component {
   }
   handleClick = (e) => {
     event.stopPropagation();
-    //console.log('click ', e);
+   
     let menuId = e.key;
     let menuObj = this.Store().findPagePathById(menuId);
-    //console.log("Current MenuItem:");
-    //console.log(menuObj);
     router.push(menuObj.url);
   }
   buildHeaderMenu(dataSource) {
@@ -100,10 +112,10 @@ export default class MyLayout extends React.Component {
 
     return (
       <div>
-        <Head>
+        {/* <Head>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta charSet='utf-8' />
-        </Head>
+        </Head> */}
 
 
         <Layout>
@@ -118,7 +130,7 @@ export default class MyLayout extends React.Component {
         }
       `}</style> */}
 
-          <Header className="header">
+          {/* <Header className="header">
             <div className="logo" />
             <Menu
               theme="dark"
@@ -129,7 +141,8 @@ export default class MyLayout extends React.Component {
             >
               {that.buildHeaderMenu(headerMenus)}
             </Menu>
-          </Header>
+          </Header> */}
+          <Head></Head>
           <Content >
             <Layout>
   

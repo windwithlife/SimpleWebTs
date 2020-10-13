@@ -1,35 +1,11 @@
-// /* eslint-disable */
-// const withLess = require('@zeit/next-less')
-// const lessToJS = require('less-vars-to-js')
-// const fs = require('fs')
-// const path = require('path')
 
-// // Where your antd-custom.less file lives
-// const themeVariables = lessToJS(
-//   fs.readFileSync(
-//     path.resolve(__dirname, './assets/antd-custom.less'),
-//     'utf8'
-//   )
-// )
-// // fix: prevents error when .less files are required by node
-// if (typeof require !== 'undefined') {
-//   require.extensions['.less'] = (file) => {}
-// }
-
-// module.exports = withLess({
-//   lessLoaderOptions: {
-//     javascriptEnabled: true,
-//     modifyVars: themeVariables // make your antd custom effective
-//   },
-
-// })
 
 const withLess = require('@zeit/next-less')
 const lessToJS = require('less-vars-to-js')
 const fs = require('fs')
 const path = require('path')
 var configfile = require('./config/config');
-let resourcePath = configfile['current'].RESOURCE_PATH;
+let resourcePath = configfile.RESOURCE_PATH;
 
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, './assets/antd-custom.less'), 'utf8')
@@ -48,11 +24,11 @@ module.exports = withLess({
     ]
   },
   assetPrefix:  process.env.NODE_ENV === "production" ? resourcePath: "" ,
-  cssModules:false,
-  cssLoaderOptions:{
-        importLoaders: 1,
-        minimize:true,
-      },
+  // cssModules:false,
+  // cssLoaderOptions:{
+  //       importLoaders: 1,
+  //       minimize:true,
+  //     },
   lessLoaderOptions: {
     javascriptEnabled: true,
     modifyVars: themeVariables, // make your antd custom effective

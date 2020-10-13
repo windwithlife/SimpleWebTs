@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox ,Modal} from 'antd';
 
 
 import "./styles/index.less";
-import {invoke_post,Loading} from "../common/index"
+import {invoke_post} from "../models/NetworkHelper"
 React.createRef()
 
 const layout = {

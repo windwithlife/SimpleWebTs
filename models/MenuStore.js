@@ -27,14 +27,15 @@ export default class MenuStore extends BaseStore{
     "live":"live",
     "config":"config",
     'user' :'user',
-    'generic' :'info',
+    'lecture_setting':'ehealth',
+    'advertise_setting' :'ehealth',
   },
   list:[ 
    
     {id:21,name: "资讯管理",url:"/info/home",level:1,type:'sider', parentId:0,channelName:"info"},
    
-    {id:11,name: "直播间",url:"/live/liveroom_home",level:1,type:'sider', parentId:0,channelName:"live"},
-    {id:12,name: "直播资讯",url:"/live/home",level:1,type:'sider', parentId:0,channelName:"live"},
+    {id:11,name: "直播间管理",url:"/ehealth_web/lecture_setting",level:1,type:'sider', parentId:0,channelName:"ehealth"},
+    {id:12,name: "直播资讯管理",url:"/ehealth_web/advertise_setting",level:1,type:'sider', parentId:0,channelName:"ehealth"},
   
 
     {id:5,name: "配置",url:"/public/category/add",level:1,type:'sider', parentId:0,channelName:"config"},

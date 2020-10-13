@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/lectureSetting.less"
 import { Button,Modal } from 'antd';
-import {invoke_post,doHref} from "../../common/index"
+import {invoke_post,doHref} from "../../models/NetworkHelper";
 
 
 export default class LectureSetting extends React.Component{

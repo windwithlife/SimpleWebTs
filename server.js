@@ -8,7 +8,8 @@ const handle = app.getRequestHandler()
 var bodyParser = require('body-parser');
 const rewrite = require('express-urlrewrite');
 var config = require('./config/config');
-const {baseUrl} = require("./config.json")
+const baseUrl = config.RESOURCE_PATH;
+
 // var uploadRootPath = config['current'].UPLOAD_PATH;
 // console.log("current upload root path"  + uploadRootPath);
 // var fileupload = require('./utils/fileupload').fileupload;
