@@ -110,7 +110,7 @@ module.exports = {
     SOA_GATE: routeToMicroservice(),
     WEB_GATE: routeToWeb(),
     WEB_RELEASE: routeToWebRelease(),
-    RESOURCE_PATH: "/account",
-    PROJECT_NAME: "meeting-live"
+    RESOURCE_PATH: "/simple/account",
+    PROJECT_NAME: "simple"
 }
 
