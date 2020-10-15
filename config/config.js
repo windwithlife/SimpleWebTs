@@ -16,12 +16,12 @@ const HTTP_PREFIX = 'http://';
 const HTTPS_PREFIX = 'https://';
 
 const DEVELOPMENT_HOST = 'localhost:8888';
-const UAT_HOST = 'uat.gateway.koudaibook.com';
-const PRODUCTION_HOST = 'gateway.koudaibook.com';
+const UAT_HOST = 'uat.soagateway.e-healthcare.net';
+const PRODUCTION_HOST = 'soagateway.e-healthcare.net';
 
 const DEVELOPMENT_HOST_WEB = 'localhost:8080';
 const UAT_HOST_WEB = 'uat.koudaibook.com';
-const PRODUCTION_HOST_WEB = 'www.koudaibook.com';
+const PRODUCTION_HOST_WEB = 'manager.e-healthcare.net';
 
 function detectEnvironment() {
   let env = ENV_NAME_DEVELOPMENT;

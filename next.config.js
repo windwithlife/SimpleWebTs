@@ -12,9 +12,7 @@ const themeVariables = lessToJS(
 )
 
 module.exports = withLess({
-  //  publicRuntimeConfig: {
-  //    staticFolder: '/account/static',
-  //  },
+
   async rewrites() {
     return [
       {
