@@ -2,6 +2,7 @@
     "name": "with-ant-design",
     "version": "1.0.0",
     "scripts": {
+        
         "dev": "cross-env NODE_ENV=development nodemon",
         "clean": "rm -rf .next && rm -rf .server",
         "client:build": "next build",
