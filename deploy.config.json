@@ -1,0 +1,15 @@
+{
+  "project_name":"tbus-node",
+  "mockpro":{
+    "projcet_path":"/Users/zhangfan/tbus-node",
+    "pm2_log_path_prefix":"/Users/zhangfan/tbus-node/logs/pm2/",
+    "winston_log_path_prefix":"/Users/zhangfan/tbus-node/logs/winston/",
+    "node_env":"test"
+  },
+  "production":{
+    "projcet_path":"/root/web/tbus-node/",
+    "pm2_log_path_prefix":"/root/web/logs/tbus-node/pm2/",
+    "winston_log_path_prefix":"/root/web/logs/tbus-node/winston/",
+    "node_env":"production"
+  }
+}

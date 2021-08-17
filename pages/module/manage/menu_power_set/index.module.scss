@@ -1,0 +1,23 @@
+.content_container{
+  background: #fff;
+  height: calc(100% - 48px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0px 20px;
+}
+.search_con{
+  background: #fff;
+  display: flex;
+  justify-content: flex-end;
+  padding:20px;
+}
+.pagination_con{
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 12px;
+}
+.power_set{
+  display: flex;
+  align-items: center;
+}
