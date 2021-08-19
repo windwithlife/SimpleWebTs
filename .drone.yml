@@ -13,6 +13,8 @@ steps:
       - cd  ./
       - npm install
       - npm run build
+      - rm -rf ./node_modules
+      - npm install --production
 
   - name: 构建镜像&PUSH镜像到Hub（PROD）.
     image: plugins/docker
